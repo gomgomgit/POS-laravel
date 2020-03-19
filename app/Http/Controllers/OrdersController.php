@@ -47,6 +47,7 @@ class OrdersController extends Controller {
 	}
 	public function details($id) {
 		$data['odr'] = Orders::find($id);
+
 		return view('orders.details', $data);
 	}
 }
