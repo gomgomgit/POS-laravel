@@ -44,3 +44,4 @@ Route::get('orders', 'OrdersController@index');
 Route::get('orders/add', 'OrdersController@add');
 Route::post('orders/store', 'OrdersController@store');
 Route::get('orders/details/{id}', 'OrdersController@details');
+Route::get('orders/delete/{id}', 'OrdersController@delete');

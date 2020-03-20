@@ -50,4 +50,9 @@ class OrdersController extends Controller {
 
 		return view('orders.details', $data);
 	}
+	public function delete($id) {
+		Orders::find($id)->delete();
+		OrderDetail::where('order_id', $id)->delete();
+		return redirect('orders');
+	}
 }
