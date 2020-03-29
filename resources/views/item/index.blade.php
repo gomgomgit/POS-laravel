@@ -8,6 +8,9 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Item</h3>
+              <div class="box-tools">
+                <a href="{{url('item/add')}}" class="btn btn-primary">Tambah Item</a>
+              </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -18,8 +21,7 @@
                   <th style="width: 175px">Category</th>
                   <th style="width: 25%">Price</th>
                   <th style="width: 15%">Stock</th>
-                  <th style="width: 120px">Edit</th>
-                  <th style="width: 120px">Delete</th>
+                  <th style="width: 240px">Action</th>
                 </tr>
 
                 @php
@@ -33,10 +35,8 @@
                   <td>{{$row->price}}</td>
                   <td>{{$row->stock}}</td>
                   <td>
-                    <a href="item/edit/{{$row->id}}" class="btn btn-success">Edit</a>
-                  </td>
-                  <td>
-                    <a href="{{url('item/delete/'.$row->id)}}" class="btn btn-danger">Delete</a>
+                    <a href="item/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
+                    <a href="{{url('item/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
                 @endforeach
@@ -53,9 +53,6 @@
                 <li><a href="#">3</a></li>
                 <li><a href="#">&raquo;</a></li>
               </ul>
-              <div>
-                <a href="{{url('item/add')}}" class="btn btn-primary">Tambah Item</a>
-              </div>
             </div>
           </div>
           <!-- /.box -->

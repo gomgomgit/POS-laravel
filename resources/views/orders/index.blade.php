@@ -7,7 +7,10 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Item</h3>
+              <h3 class="box-title">Orders</h3>
+              <div class="box-tools">
+                <a href="{{url('orders/add')}}" class="btn btn-primary">Tambah Order</a>
+              </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -19,8 +22,7 @@
                   <th style="width: 15%">Date</th>
                   <th style="width: 25%">Total</th>
                   <th style="width: 120px">Details</th>
-                  <th style="width: 120px">Edit</th>
-                  <th style="width: 120px">Delete</th>
+                  <th style="width: 240px">Action</th>
                 </tr>
 
                 @php
@@ -43,13 +45,11 @@
                     @endphp
                   </td>
                   <td>
-                    <a href="orders/details/{{$row->id}}" class="btn btn-primary">Details</a>
+                    <a href="orders/details/{{$row->id}}" class="btn-sm btn-primary">Details</a>
                   </td>
                   <td>
-                    <a href="orders/edit/{{$row->id}}" class="btn btn-success">Edit</a>
-                  </td>
-                  <td>
-                    <a href="{{url('orders/delete/'.$row->id)}}" class="btn btn-danger">Delete</a>
+                    <a href="orders/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
+                    <a href="{{url('orders/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
                 @endforeach
@@ -66,9 +66,6 @@
                 <li><a href="#">3</a></li>
                 <li><a href="#">&raquo;</a></li>
               </ul>
-              <div>
-                <a href="{{url('orders/add')}}" class="btn btn-primary">Tambah Order</a>
-              </div>
             </div>
           </div>
           <!-- /.box -->

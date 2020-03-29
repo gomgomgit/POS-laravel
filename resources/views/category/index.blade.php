@@ -6,17 +6,19 @@
       <div class="row">
         <div class="col-md-12">
           <div class="box">
-            <div class="box-header with-border">
+            <div class="box-header with-border d-flex">
               <h3 class="box-title">Category</h3>
+              <div class="box-tools">
+                <a href="{{url('category/add')}}" class="btn btn-primary">Tambah Category</a>
+              </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-bordered">
                 <tr>
                   <th style="width: 20px">No</th>
-                  <th style="width: 100%">Name</th>
-                  <th style="width: 120px">Edit</th>
-                  <th style="width: 120px">Delete</th>
+                  <th>Name</th>
+                  <th style="width: 240px">Action</th>
                 </tr>
 
                 @php
@@ -27,10 +29,8 @@
                   <td>{{$no++}}</td>
                   <td>{{$row->name}}</td>
                   <td>
-                    <a href="category/edit/{{$row->id}}" class="btn btn-success">Edit</a>
-                  </td>
-                  <td>
-                    <a href="{{url('category/delete/'.$row->id)}}" class="btn btn-danger">Delete</a>
+                    <a href="category/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
+                    <a href="{{url('category/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
                 @endforeach
@@ -47,9 +47,6 @@
                 <li><a href="#">3</a></li>
                 <li><a href="#">&raquo;</a></li>
               </ul>
-              <div>
-                <a href="{{url('category/add')}}" class="btn btn-primary">Tambah Category</a>
-              </div>
             </div>
           </div>
           <!-- /.box -->

@@ -8,6 +8,9 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">User</h3>
+              <div class="box-tools">
+                <a href="{{url('users/add')}}" class="btn btn-primary">Tambah User</a>
+              </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -16,8 +19,7 @@
                   <th style="width: 20px">No</th>
                   <th style="width: 40%">Name</th>
                   <th style="width: 40%">Email</th>
-                  <th style="width: 220px">Edit</th>
-                  <th style="width: 220px">Delete</th>
+                  <th style="width: 440px">Action</th>
                 </tr>
 
                 @php
@@ -29,10 +31,8 @@
                   <td>{{$row->name}}</td>
                   <td>{{$row->email}}</td>
                   <td>
-                    <a href="users/edit/{{$row->id}}" class="btn btn-success">Edit</a>
-                  </td>
-                  <td>
-                    <a href="{{url('users/delete/'.$row->id)}}" class="btn btn-danger">Delete</a>
+                    <a href="users/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
+                    <a href="{{url('users/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
                 @endforeach
@@ -49,9 +49,6 @@
                 <li><a href="#">3</a></li>
                 <li><a href="#">&raquo;</a></li>
               </ul>
-              <div>
-                <a href="{{url('users/add')}}" class="btn btn-primary">Tambah User</a>
-              </div>
             </div>
           </div>
           <!-- /.box -->
