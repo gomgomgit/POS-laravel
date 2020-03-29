@@ -15,6 +15,8 @@ class LoginController extends Controller {
 		if ($check) {
 			$data['category'] = Category::all();
 			return view('category.index', $data);
-		} else {echo "Email salah";}
+		} else {
+			echo "Email salah";
+		}
 	}
 }
