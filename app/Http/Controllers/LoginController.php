@@ -11,10 +11,10 @@ class LoginController extends Controller {
 		$this->validate($req, [
 			'email' => 'required',
 		]);
-		$check['ck'] = Users::find($req->email);
+		$check = Users::where('email', $req->email)->first();
 		if ($check) {
 			$data['category'] = Category::all();
 			return view('category.index', $data);
-		} else {echo "error";}
+		} else {echo "Email salah";}
 	}
 }
