@@ -24,35 +24,35 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <li>
-          <a href='{{url("/users")}}'>
-            <i class="fa fa-users"></i> <span>User</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span> Dashboard</span>
           </a>
         </li>
-        <li>
-          <a href='{{url("/category")}}'>
-            <i class="fa fa-th"></i> <span>Category</span>
+        <li class="treeview" style="height: auto;">
+          <a href="#">
+            <i class="fa fa-book"></i> <span> Product</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-        </li>
-        <li>
-          <a href='{{url("/item")}}'>
-            <i class="fa fa-th"></i> <span>Item</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
+          <ul class="treeview-menu" style="display: none;">
+            <li><a href="/category"><i class="fa fa-circle-o"></i> Category</a></li>
+            <li><a href="/item"><i class="fa fa-circle-o"></i> Item</a></li>
+          </ul>
         </li>
         <li>
           <a href='{{url("/orders")}}'>
-            <i class="fa fa-th"></i> <span>Order</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
+            <i class="fa fa-shopping-cart"></i> <span> Order</span>
+          </a>
+        </li>
+        <li>
+          <a href='{{url("/users")}}'>
+            <i class="fa fa-users"></i> <span> Customers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-exclamation-triangle"></i> <span> Report</span>
           </a>
         </li>
       </ul>

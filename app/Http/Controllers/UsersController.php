@@ -51,6 +51,6 @@ class UsersController extends Controller {
 	}
 	public function destroy(Users $users, $id) {
 		$users::find($id)->delete();
-		return redirect('users');
+		return redirect('users')->with('message', 'Deleted');
 	}
 }
