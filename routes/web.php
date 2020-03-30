@@ -18,6 +18,8 @@ Route::get('', function () {
 });
 Route::post('login', 'LoginController@check');
 
+Route::get('dashboard', 'DashboardController@index');
+
 Route::get('category', 'CategoryController@index');
 Route::get('category/add', function () {
 	return view('category.add');
