@@ -11,10 +11,8 @@ class PaymentMethodSeeder extends Seeder {
 	 */
 	public function run() {
 		PaymentMethod::insert([
-			'name' => 'Cash',
-		]);
-		PaymentMethod::insert([
-			'name' => 'Transfer',
+			['name' => 'Cash'],
+			['name' => 'Transfer'],
 		]);
 	}
 }
