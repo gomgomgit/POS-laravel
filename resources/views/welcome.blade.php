@@ -41,7 +41,7 @@
         <input type="email" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
-    @if(!empty(session('err_email')))
+    @if(session('err_email'))
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <p><i class="icon fa fa-ban"></i> {{session('err_email')}}</p>
