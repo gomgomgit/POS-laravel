@@ -39,7 +39,7 @@
                   <td>{{$row->email}}</td>
                   <td>
                     <a href="users/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
-                    <a href="{{url('users/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
+                    <a onclick="return confirm('Are you sure to delete it?')" href="{{url('users/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
                 @endforeach

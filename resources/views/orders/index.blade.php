@@ -56,7 +56,7 @@
                   </td>
                   <td>
                     <a href="orders/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
-                    <a href="{{url('orders/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
+                    <a onclick="return confirm('Are you sure to delete it?')" href="{{url('orders/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
                 @endforeach

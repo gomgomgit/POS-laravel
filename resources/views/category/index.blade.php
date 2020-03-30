@@ -37,7 +37,7 @@
                   <td>{{$row->name}}</td>
                   <td>
                     <a href="category/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
-                    <a href="{{url('category/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
+                    <a onclick="return confirm('Are you sure to delete it?')" href="{{url('category/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
                 @endforeach
