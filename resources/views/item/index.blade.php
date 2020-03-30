@@ -25,7 +25,7 @@
           @endif
           <div class="box">
             <div class="box-header with-border">
-              <a href="{{url('item/add')}}" class="btn btn-primary">Tambah Item</a>
+              <a href="{{url('item/add')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Item</a>
               <div class="box-tools">
               </div>
             </div>
