@@ -25,7 +25,7 @@ class UsersController extends Controller {
 			'email' => $request->email,
 			'password' => bcrypt($request->password),
 		]);
-		return redirect('users');
+		return redirect('users')->with('message', 'User has been added');
 	}
 	public function edit(Users $users, $id) {
 		$data['user'] = $users::find($id);
@@ -47,10 +47,10 @@ class UsersController extends Controller {
 
 		$update->save();
 
-		return redirect('users');
+		return redirect('users')->with('message', 'User has been updated');
 	}
 	public function destroy(Users $users, $id) {
 		$users::find($id)->delete();
-		return redirect('users')->with('message', 'User has been deleted');
+		return redirect('users')->with('message', 'User has been deleted'); //jadi with fash data session parameter1 sebagai variable dalam session dan parameter2 sebagai isinya
 	}
 }

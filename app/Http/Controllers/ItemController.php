@@ -30,7 +30,7 @@ class ItemController extends Controller {
 			'stock' => $req->stock,
 		]);
 
-		return redirect('item');
+		return redirect('item')->with('message', 'Item has been added');
 	}
 	public function edit($id) {
 		$cate['category'] = Category::all();
@@ -52,10 +52,10 @@ class ItemController extends Controller {
 		$update->stock = $req->stock;
 		$update->save();
 
-		return redirect('item');
+		return redirect('item')->with('message', 'Item has been updated');
 	}
 	public function delete($id) {
 		Item::find($id)->delete();
-		return redirect('item')->with('delete', 'Item has been deleted');
+		return redirect('item')->with('message', 'Item has been deleted');
 	}
 }

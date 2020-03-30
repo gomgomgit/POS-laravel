@@ -22,13 +22,13 @@ class CategoryController extends Controller {
 		// 	'name' => $request->name,
 		// ]);
 
-		return redirect('category');
+		return redirect('category')->with('message', 'Category has been added');
 	}
 	public function delete($id) {
 		$delete = Category::find($id);
 		$delete->delete();
 
-		return redirect()->back()->with('delete', 'Category has been deleted');
+		return redirect()->back()->with('message', 'Category has been deleted');
 
 	}
 	public function edit($id) {
@@ -45,6 +45,6 @@ class CategoryController extends Controller {
 		$update->name = $request->name;
 		$update->save();
 
-		return redirect('category');
+		return redirect('category')->with('message', 'Category has been updated'); //jadi with fash data session parameter1 sebagai variable dalam session dan parameter2 sebagai isinya
 	}
 }
