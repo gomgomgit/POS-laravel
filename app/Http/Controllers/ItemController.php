@@ -56,6 +56,6 @@ class ItemController extends Controller {
 	}
 	public function delete($id) {
 		Item::find($id)->delete();
-		return redirect('item');
+		return redirect('item')->with('delete', 'Item has been deleted');
 	}
 }

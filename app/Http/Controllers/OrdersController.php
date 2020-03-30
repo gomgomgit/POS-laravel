@@ -53,6 +53,6 @@ class OrdersController extends Controller {
 	public function delete($id) {
 		Orders::find($id)->delete();
 		OrderDetail::where('order_id', $id)->delete();
-		return redirect('orders');
+		return redirect('orders')->with('delete', 'Order has been deleted');
 	}
 }

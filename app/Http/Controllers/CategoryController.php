@@ -28,7 +28,7 @@ class CategoryController extends Controller {
 		$delete = Category::find($id);
 		$delete->delete();
 
-		return redirect()->back();
+		return redirect()->back()->with('delete', 'Category has been deleted');
 
 	}
 	public function edit($id) {
