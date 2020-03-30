@@ -33,9 +33,9 @@ class ItemController extends Controller {
 		return redirect('item')->with('message', 'Item has been added');
 	}
 	public function edit($id) {
-		$cate['category'] = Category::all();
-		$item['item'] = Item::find($id);
-		return view('item.edit', $cate, $item);
+		$data['category'] = Category::all();
+		$data['item'] = Item::find($id);
+		return view('item.edit', $data);
 	}
 	public function update($id, Request $req) {
 		$this->validate($req, [

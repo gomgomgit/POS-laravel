@@ -14,9 +14,9 @@ class OrdersController extends Controller {
 		return view('orders.index', $data);
 	}
 	public function add() {
-		$name['usr'] = Users::all();
-		$cwi['cwis'] = Category::all();
-		return view('orders.add', $name, $cwi);
+		$data['usr'] = Users::all();
+		$data['cwis'] = Category::all();
+		return view('orders.add', $data);
 	}
 	public function store(Request $req) {
 		$this->validate($req, [
