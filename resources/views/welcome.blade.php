@@ -44,7 +44,7 @@
     @if(session('email'))
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <p><i class="icon fa fa-ban"></i> {{session('email')}}</p>
+        <p><i class="icon fa fa-ban"></i> {{session('err_email')}}</p>
       </div>
     @endif
       <div class="form-group has-feedback">
@@ -54,7 +54,7 @@
     @if(session('pass'))
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <p><i class="icon fa fa-ban"></i> {{session('pass')}}</p>
+        <p><i class="icon fa fa-ban"></i> {{session('err_pass')}}</p>
       </div>
     @endif
       <div class="row">

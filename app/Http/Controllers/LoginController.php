@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,11 +18,10 @@ class LoginController extends Controller {
 			if ($pass) {
 				$req->session()->put('email', $data->email);
 
-				$data['category'] = Category::all();
-				return view('category.index', $data);
+				return redirect('dashboard');
 			} else {
-				return redirect('/')->with('pass', 'Password salah');
+				return redirect('/')->with('err_pass', 'Password salah');
 			}
-		} else {return redirect('/')->with('email', 'Email belum terdaftar');}
+		} else {return redirect('/')->with('err_email', 'Email belum terdaftar');}
 	}
 }
