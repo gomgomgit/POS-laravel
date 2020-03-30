@@ -1,6 +1,16 @@
 @extends('template.app')
 
 @section('content')
+    <section class="content-header">
+      <h1>
+        Customer
+        <small> Index</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">User</li>
+      </ol>
+    </section>
 
 	    <section class="content">
       <div class="row">
@@ -14,9 +24,8 @@
           @endif
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">User</h3>
+              <a href="{{url('users/add')}}" class="btn btn-primary">Tambah User</a>
               <div class="box-tools">
-                <a href="{{url('users/add')}}" class="btn btn-primary">Tambah User</a>
               </div>
             </div>
             <!-- /.box-header -->

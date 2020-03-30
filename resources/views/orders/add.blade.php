@@ -1,6 +1,17 @@
 @extends('template.app')
 
 @section('content')
+  <section class="content-header">
+    <h1>
+      Order
+      <small> Add</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#"><i class="fa fa-shopping-cart"></i> Order</a></li>
+      <li class="active">Add</li>
+    </ol>
+  </section>
 
 	<section class="content">
 	  <div class="row">

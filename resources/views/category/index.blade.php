@@ -2,6 +2,17 @@
 
 @section('content')
 
+      <section class="content-header">
+        <h1>
+          Category
+          <small>Index</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Category</li>
+        </ol>
+      </section>
+
 	    <section class="content">
       <div class="row">
         <div class="col-md-12">
@@ -14,9 +25,8 @@
           @endif
           <div class="box">
             <div class="box-header with-border d-flex">
-              <h3 class="box-title">Category</h3>
+              <a href="{{url('category/add')}}" class="btn btn-primary">Tambah Category</a>
               <div class="box-tools">
-                <a href="{{url('category/add')}}" class="btn btn-primary">Tambah Category</a>
               </div>
             </div>
             <!-- /.box-header -->
