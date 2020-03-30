@@ -11,13 +11,12 @@ class UserSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run(Faker $faker) {
-		;
 
 		for ($i = 0; $i < 5; $i++) {
 			Users::insert([
 				'name' => $faker->name,
 				'email' => $faker->email,
-				'password' => bcrypt($faker->word),
+				'password' => bcrypt(111111),
 			]);
 		}
 	}

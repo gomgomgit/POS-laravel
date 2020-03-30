@@ -16,7 +16,7 @@ class LoginController extends Controller {
 		if ($data) {
 			$pass = hash::check($req->password, $data->password);
 			if ($pass) {
-				// $req->session()->put('email', $data->email);
+				$req->session()->put('email', $data->email);
 
 				return redirect('dashboard');
 			} else {
