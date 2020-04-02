@@ -36,7 +36,7 @@
             </span>
           </a>
           <ul class="treeview-menu" style="display: none;">
-            <li><a href="/category"><i class="fa fa-circle-o"></i> Category</a></li>
+            <li><a href="{{route('haha')}}"><i class="fa fa-circle-o"></i> Category</a></li>
             <li><a href="/item"><i class="fa fa-circle-o"></i> Item</a></li>
           </ul>
         </li>

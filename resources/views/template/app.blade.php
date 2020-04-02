@@ -28,6 +28,8 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href='{{asset("AdminLTE-2.4/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}'>
 
+  @yield('link')
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

@@ -13,166 +13,259 @@
     </ol>
   </section>
 
-	<section class="content">
-	  <div class="row">
-	    <!-- right column -->
-	    <div class="col-md-12">
-	      <!-- Horizontal Form -->
-          <!-- Custom Tabs -->
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-
-              @php
-                $no = 1;
-              @endphp
-              @foreach($cwis as $ct)
-                <li class=""><a href="{{'#tab_'.$no++}}" data-toggle="tab"><h3 class="font-weight-bold px-3">{{$ct->name}}</h3></a></li>
-              @endforeach
-              <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-            </ul>
-            <div class="tab-content">
-                @php
-                  $no = 1;
-                @endphp
-                @foreach($cwis as $itempercategory)
-                  <div class="tab-pane" id="{{'tab_'.$no++}}">
-                    <div class="row">
-                      @foreach($itempercategory->cwi as $citem)
-                      <div class="col-md-3">
-                        <div class="w-100">
-                          <img width="100%" src="https://www.nicepng.com/png/full/246-2463623_cafe-menu-logo-png.png">
-                        </div>
-                        <div class="" style="padding: 20px">
-                          <h3><b>{{$citem->name}}</b></h3>
-                          <p>Harga : {{$citem->price}}</p>
-                          <p>Stock : {{$citem->stock}}</p>
-                          <div class="input-group">
-                            <div class="input-group-btn">
-                              <div class="btn btn-primary">Qty</div>
-                            </div>
-                            <!-- /btn-group -->
-                            <input class="input_qty" id="{{$citem->id}}" price="{{$citem->price}}" value="1" type="number" name="" style="width: 100%">
-                          </div>
-                          <h4>Total : <b class="tot_{{$citem->id}}">{{$citem->price}}</b></h4>
-                          <div class="btn btn-primary add_cart" id="{{$citem->id}}" item="{{$citem->name}}" category="{{$citem->cate->name}}" price="{{$citem->price}}" style="width: 100%">Add to cart</div>
-                        </div>
-                      </div>
-                      @endforeach
-                    </div>
-                  </div>
-                  @endforeach
-              <!-- /.tab-pane -->
-            </div>
-            <!-- /.tab-content -->
-          </div>
-          <!-- nav-tabs-custom -->
-	      <!-- /.box -->
-	    </div>
+  <section class="content" id="app">
+    <div class="row">
+      <!-- right column -->
       <div class="col-md-12">
-      <form method="post" action="/orders/store">
-        @csrf
+        <!-- Horizontal Form -->
         <div class="box">
-          <div class="with-border" style="display: flex; justify-content: space-between;padding: 20px 20px 0">
-            <div><h3 class="m-0" style="margin: 0"><b>Cart </b></h3></div>
-            <div>
-              <span style="margin-right: 20px">
-                <label>
-                User :
-                <select name="user">
-                  @foreach($usr as $user)
-                  <option value="{{$user->id}}">{{$user->name}}</option>
-                  @endforeach
-                </select>
-              </label>
-              </span>
-              <span>
-                <label>
-                Table : <input type="number" name="table">
-              </label>
-              </span>
+          <div class="box-header with-border">
+            <p>Order</p>
+            <div class="box-tools">
             </div>
-
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th style="width: 60px">Qty</th>
-                  <th style="width: 300px">Total</th>
-                </tr>
-              </thead>
-              <tbody id="cart-list" class="">
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td></td>
-                  <td colspan="4"><h3><b>TOTAL :</b></h3></td>
-                  <td class=""><h3><b>RP.<span class="total-cart"></span></b></h3></td>
-                </tr>
-              </tfoot>
-            </table>
+
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="data-product">
+                    <input type="text" v-model="search" name="search" placeholder="Search Item" style="width: 100%">
+                    <table class="table">
+                        <tr v-for="item in filteredItems">
+                          <td>@{{item.name}}</td>
+                          <td>@{{item.price}}</td>
+                          <td><button v-on:click="addCart(item)" class="btn btn-xs btn-success pull-right"><i class="fa fa-plus"></i></button></td>
+                        </tr>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="col-md-8">
+
+
+                  <form class="form form-horizontal" action="/orders/store" method="post">
+                    @csrf
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div>
+                          <div class="form-group">
+                            <label for="inputUser" class="col-sm-4 control-label">User</label>
+
+                            <div class="col-sm-8">
+                              <select name="user" class="form-control" id="inputUser">
+                                <option v-for="user in user" v-bind:value="user.id">@{{user.name}}</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputTable" class="col-sm-4 control-label">Table Number</label>
+
+                            <div class="col-sm-8">
+                              <input type="text" name="table" class="form-control" id="inputTable">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputAdmin" class="col-sm-4 control-label">Employee</label>
+
+                            <div class="col-sm-8">
+                              <input type="Text" class="form-control" id="inputAdmin" placeholder="Admin Example" disabled="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+
+                        <div>
+                          <div class="form-group">
+                            <label for="inputDate" class="col-sm-4 control-label">Date</label>
+
+                            <div class="col-sm-8">
+                              <input type="text" class="form-control" id="inputDate" disabled="" v-model="tanggal">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputPayment" class="col-sm-4 control-label">Password</label>
+
+                            <div class="col-sm-8">
+                              <select style="width: 100%">
+                                <option v-for="py in payments" value="">@{{py.payment}}</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="box-body table-responsive no-padding">
+                          <table class="table table-hover">
+                            <tbody>
+                              <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                              </tr>
+                              <tr v-for="(cart, index) in selected">
+                                <td>@{{cart.name}} <input type="hidden" name="item[]" v-bind:value="cart.id"></td>
+                                <td>Rp. @{{cart.price}}<input type="hidden" v-bind:value="cart.price" v-model="cartPrice[index] = cart.price"></td>
+                                <td><input type="number" v-bind:name="'qty['+index+']'" v-model="cartQty[index]" v-on:change="setTotal(index)"></td>
+                                <td>Rp. @{{cartTotal[index]}}<input type="hidden" v-bind:name="'total['+index+']'" v-model="cartTotal[index]"></td>
+                                <td><a v-on:click="deleteCart(index)" class="btn btn-sm btn-danger pull-right"><i class="fa fa-trash"></i></a></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <br><br><br>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-7">
+                        <div class="form-group">
+                          <label for="inputDiscount" class="col-sm-4 control-label">Discount</label>
+
+                          <div class="col-sm-8">
+                            <input type="text" name="table" class="form-control" id="inputDiscount">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPamount" class="col-sm-4 control-label">Payment Amount</label>
+
+                          <div class="col-sm-8">
+                            <input type="Text" class="form-control" id="inputPamount" v-model="paymentAmount" v-on:change="setChange">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Total Cart</label>
+
+                          <label class="col-sm-8 control-label">@{{allTotal}}</label>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-sm-4 control-label">Change</label>
+
+                          <label class="col-sm-8 control-label">@{{change}}</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                        <br><br>
+                        <button type="submit" class="btn btn-sm btn-success" style="width: 100px">ORDER</button>
+                      </div>
+                    </div>
+
+                  </form>
+
+
+                </div>
+              </div>
+
+
           </div>
           <!-- /.box-body -->
-          <div class="box-footer ">
-            <button type="submit" class="btn-lg btn-primary pull-right" style="width: 200px">Order</button>
+          <div class="box-footer clearfix">
+
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <li><a href="#">&laquo;</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">&raquo;</a></li>
+            </ul>
           </div>
         </div>
         <!-- /.box -->
-      </form>
       </div>
-	    <!--/.col (right) -->
-	  </div>
+      <!--/.col (right) -->
+    </div>
 
-	  <!-- /.row -->
-	</section>
+    <!-- /.row -->
+  </section>
 
 @endsection
 
 @section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+{{-- <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('.input_qty').change(function(){
-      var id = $(this).attr('id');
-      var price = $(this).attr('price');
-      var qty = $(this).val();
-      var tot = price * qty;
-      $('.tot_'+id).html(tot);
-    });
+  new Vue({
+    el: '#app',
+    data: {
+      items: [
+        @foreach($item as $i)
+          {id: {{$i->id}}, name:"{{$i->name}}" , price:{{$i->price}},},
+        @endforeach
+        ],
+      payments:[
+        @foreach($payment as $py)
+          {id: {{$py->id}}, payment:"{{$py->name}}"},
+        @endforeach
+      ],
+      user: [
+        @foreach($usr as $user)
+          {id: {{$user->id}}, name:"{{$user->name}}"},
+        @endforeach
+      ],
+      selected: [],
+      search: '',
+      cartList:'',
+      tanggal:'',
+      cartPrice: [],
+      cartQty: [],
+      cartTotal: [],
+      allTotal: 0,
+      paymentAmount: '',
+      change: 0,
+    },
 
-    var list = 0;
-    $('.add_cart').click(function(){
-      var id = $(this).attr('id');
-      var item = $(this).attr('item');
-      var price = $(this).attr('price');
-      var cate = $(this).attr('category');
-      var qty = $('.input_qty[id="'+id+'"]').val();
-      var tot = qty*price;
+    computed: {
+      filteredItems: function(){
+        return this.items.filter((item)=> {
+          return item.name.match(this.search);
+        });
+      },
+    },
 
-      list = list + 1;
+    methods: {
+      addCart: function(ee) {
+        this.selected.push({
+          id: ee.id,
+          name: ee.name,
+          price: ee.price,
+        });
+      },
+      deleteCart: function(i) {
+        this.selected.splice(i, 1);
+      },
 
-      output = '<tr id="cart-row'+list+'">';
-      output += '<td>'+list+'</td>';
-      output += '<td>'+item+'<input type="hidden" value="'+id+'" name="item[]"></td>';
-      output += '<td>'+cate+'</td>';
-      output += '<td>'+price+'</td>';
-      output += '<td>'+qty+'<input type="hidden" value="'+qty+'" name="qty[]"></td>';
-      output += '<td class="total-item">'+tot+' <input type="hidden" value="'+tot+'" name="total[]"></td>';
-      output += '</tr>';
+      callFunction: function () {
+          var currentDateWithFormat = new Date().toJSON().slice(0,10).replace(/-/g,'-');
+          this.tanggal = currentDateWithFormat;
+      },
 
-      $('#cart-list').append(output);
-
-      var total_row = 0;
-      $('.total-item').each(function() {
-        var row = $(this).text();
-        total_row += parseInt(row);
-      })
-      $('.total-cart').html(total_row);
-    });
-  });
+      setTotal: function(i) {
+        this.cartTotal[i] = this.cartPrice[i] * this.cartQty[i];
+        this.allTotal = 0;
+        this.cartTotal.forEach(row => {
+          this.allTotal += row;
+        });
+      },
+      setChange: function() {
+        this.change = this.paymentAmount - this.allTotal ;
+      }
+    },
+    mounted() {
+      this.callFunction();
+    },
+  })
 </script>
 @endsection

@@ -20,7 +20,7 @@ Route::post('login', 'LoginController@check');
 
 Route::get('dashboard', 'DashboardController@index');
 
-Route::get('category', 'CategoryController@index');
+Route::get('category', 'CategoryController@index')->name('haha');
 Route::get('category/add', function () {
 	return view('category.add');
 });
@@ -45,6 +45,9 @@ Route::get('users/delete/{id}', 'UsersController@destroy');
 
 Route::get('orders', 'OrdersController@index');
 Route::get('orders/add', 'OrdersController@add');
+// Route::get('/orders/add', function () {
+// 	return view('orders/add');
+// })->where('any', '.*');
 Route::post('orders/store', 'OrdersController@store');
 Route::get('orders/details/{id}', 'OrdersController@details');
 Route::get('orders/delete/{id}', 'OrdersController@delete');

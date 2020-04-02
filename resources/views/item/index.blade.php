@@ -34,11 +34,11 @@
               <table class="table table-bordered">
                 <tr>
                   <th style="width: 20px">No</th>
-                  <th style="width: 25%">Name</th>
-                  <th style="width: 175px">Category</th>
-                  <th style="width: 25%">Price</th>
-                  <th style="width: 15%">Stock</th>
-                  <th style="width: 240px">Action</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th style="width: 170px">Price</th>
+                  <th style="width: 100px">Stock</th>
+                  <th style="width: 250px">Action</th>
                 </tr>
 
                 @php
@@ -49,7 +49,7 @@
                   <td>{{$no++}}</td>
                   <td>{{$row->name}}</td>
                   <td>{{$row->cate->name}}</td>{{-- Dari function/method di model --}}
-                  <td>{{$row->price}}</td>
+                  <td>Rp. {{$row->price}}</td>
                   <td>{{$row->stock}}</td>
                   <td>
                     <a href="item/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>

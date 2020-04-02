@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Item;
 use App\Models\OrderDetail;
 use App\Models\Orders;
+use App\Models\PaymentMethod;
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,19 @@ class OrdersController extends Controller {
 	public function add() {
 		$data['usr'] = Users::all();
 		$data['cwis'] = Category::all();
+		// $data['item'] = Item::all()->sortBy('name');
+		$data['item'] = Item::all()->sortBy('name');
+		$data['payment'] = PaymentMethod::all()->sortBy('name');
+
 		return view('orders.add', $data);
+
+		// return response()->json([
+		// 	'success' => true,
+		// 	'message' => 'add order',
+		// 	'data' => $data['item'],
+		// ]);
+
+		// return $data['item'];
 	}
 	public function store(Request $req) {
 		$this->validate($req, [
