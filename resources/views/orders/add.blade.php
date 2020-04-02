@@ -137,7 +137,7 @@
                           <label for="inputPamount" class="col-sm-4 control-label">Payment Amount</label>
 
                           <div class="col-sm-8">
-                            <input type="Text" class="form-control" id="inputPamount" v-model="paymentAmount" v-on:change="setChange">
+                            <input type="number" class="form-control" id="inputPamount" v-model="paymentAmount" v-on:change="setChange">
                           </div>
                         </div>
                       </div>
