@@ -19,7 +19,7 @@ Route::get('', function () {
 // Route::post('login', 'LogController@check');
 Route::get('logout', 'LogController@out');
 
-Route::get('dashboard', 'DashboardController@index');
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('category', 'CategoryController@index')->name('haha');
 Route::get('category/add', function () {
