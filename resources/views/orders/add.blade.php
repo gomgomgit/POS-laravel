@@ -236,15 +236,18 @@
     },
 
     methods: {
-      addCart: function(ee) {
+      addCart: function(i) {
         this.selected.push({
-          id: ee.id,
-          name: ee.name,
-          price: ee.price,
+          id: i.id,
+          name: i.name,
+          price: i.price,
         });
       },
       deleteCart: function(i) {
         this.selected.splice(i, 1);
+        this.cartQty.splice(i, 1);
+        this.cartTotal.splice(i, 1);
+        this.setAllTotal();
       },
 
       callFunction: function () {
@@ -254,6 +257,9 @@
 
       setTotal: function(i) {
         this.cartTotal[i] = this.cartPrice[i] * this.cartQty[i];
+        this.setAllTotal();
+      },
+      setAllTotal: function() {
         this.allTotal = 0;
         this.cartTotal.forEach(row => {
           this.allTotal += row;
