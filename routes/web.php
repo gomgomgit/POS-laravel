@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('', function () {
-	return view('welcome');
-});
-Route::post('login', 'LoginController@check');
+	return view('auth.login');
+})->name('login');
+// Route::post('login', 'LogController@check');
+Route::get('logout', 'LogController@out');
 
 Route::get('dashboard', 'DashboardController@index');
 
@@ -51,3 +52,6 @@ Route::get('orders/add', 'OrdersController@add');
 Route::post('orders/store', 'OrdersController@store');
 Route::get('orders/details/{id}', 'OrdersController@details');
 Route::get('orders/delete/{id}', 'OrdersController@delete');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

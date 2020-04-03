@@ -7,6 +7,9 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller {
+	public function __construct() {
+		$this->middleware('auth');
+	}
 	public function index() {
 		$data['item'] = Item::all();
 		return view('item.index', $data);

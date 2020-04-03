@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller {
+class LogController extends Controller {
+	public function __construct() {
+		$this->middleware('auth');
+	}
 	public function check(Request $req) {
 		$this->validate($req, [
 			'email' => 'required',
@@ -23,5 +27,9 @@ class LoginController extends Controller {
 				return redirect('/')->with('err_pass', 'Password salah');
 			}
 		} else {return redirect('/')->with('err_email', 'Email belum terdaftar');}
+	}
+	public function out() {
+		Auth::logout();
+		return view('welcome');
 	}
 }

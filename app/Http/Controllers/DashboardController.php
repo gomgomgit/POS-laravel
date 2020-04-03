@@ -7,6 +7,9 @@ use App\Models\Orders;
 use App\Models\Users;
 
 class DashboardController extends Controller {
+	public function __construct() {
+		$this->middleware('auth');
+	}
 	public function index() {
 		$data['item'] = Item::count();
 		$data['user'] = Users::count();
