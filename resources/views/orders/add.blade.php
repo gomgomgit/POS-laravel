@@ -51,12 +51,14 @@
                       <div class="col-md-6">
                         <div>
                           <div class="form-group">
-                            <label for="inputUser" class="col-sm-4 control-label">User</label>
+                            <label for="inputUser" class="col-sm-4 control-label">Customer</label>
 
                             <div class="col-sm-8">
-                              <select name="user" class="form-control" id="inputUser">
+                              <input type="Text" class="form-control" placeholder="{{Request::user()->name}}" disabled="">
+                              {{-- <select name="user" class="form-control" id="inputUser">
                                 <option v-for="user in user" v-bind:value="user.id">@{{user.name}}</option>
-                              </select>
+                              </select> --}}
+                              <input type="hidden" name="user" class="form-control" id="inputUser" value="{{Request::user()->id}}">
                             </div>
                           </div>
                           <div class="form-group">
@@ -130,7 +132,7 @@
                           <label for="inputDiscount" class="col-sm-4 control-label">Discount</label>
 
                           <div class="col-sm-8">
-                            <input type="text" name="table" class="form-control" id="inputDiscount">
+                            <input type="text" class="form-control" id="inputDiscount">
                           </div>
                         </div>
                         <div class="form-group">

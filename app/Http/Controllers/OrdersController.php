@@ -36,10 +36,12 @@ class OrdersController extends Controller {
 		// return $data['item'];
 	}
 	public function store(Request $req) {
-		$this->validate($req, [
-			'user' => 'required',
-			'table' => 'required',
-		]);
+		// $this->validate($req, [
+		// 	'user' => 'required',
+		// 	'table' => 'required',
+		// ]);
+
+		var_dump($req->table);
 
 		Orders::insert([
 			'table_number' => $req->table,
