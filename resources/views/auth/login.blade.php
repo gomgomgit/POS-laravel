@@ -109,7 +109,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-<form method="POST" action="{{ route('dashboard') }}">
+<form method="POST" action="{{ route('login') }}">
   @csrf
       <div class="form-group has-feedback">
         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
