@@ -35,7 +35,7 @@
                     <table class="table">
                         <tr v-for="item in filteredItems">
                           <td>@{{item.name}}</td>
-                          <td>@{{item.price}}</td>
+                          <td>Rp. @{{item.price}}</td>
                           <td><button v-on:click="addCart(item)" class="btn btn-xs btn-success pull-right"><i class="fa fa-plus"></i></button></td>
                         </tr>
                     </table>

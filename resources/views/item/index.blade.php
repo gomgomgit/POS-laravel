@@ -49,7 +49,7 @@
                   <td>{{$no++}}</td>
                   <td>{{$row->name}}</td>
                   <td>{{$row->cate->name}}</td>{{-- Dari function/method di model --}}
-                  <td>Rp. {{$row->price}}</td>
+                  <td>Rp. {{number_format($row->price, 2, "," , ".")}}</td>
                   <td>{{$row->stock}}</td>
                   <td>
                     <a href="item/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>

@@ -47,7 +47,7 @@
                       foreach($odr->owds as $tot) {
                         $total += $tot->total;
                       }
-                      echo $total;
+                      echo "Rp. ". number_format($total, 2, ",", ".");
                     @endphp
                   </td>
                 </tr>
@@ -84,7 +84,7 @@
                   <td>{{$no++}}</td>
                   <td>{{$row->dwi->name}}</td>
                   <td>{{$row->qty}}</td>
-                  <td>{{$row->total}}</td>
+                  <td>{{number_format($row->total, 2, ",", ".")}}</td>
                 </tr>
                 @endforeach
 

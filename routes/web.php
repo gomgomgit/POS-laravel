@@ -30,7 +30,7 @@ Route::get('category/delete/{id}', 'CategoryController@delete');
 Route::get('category/edit/{id}', 'CategoryController@edit');
 Route::post('category/update/{id}', 'CategoryController@update');
 
-Route::get('item', 'ItemController@index');
+Route::get('item', 'ItemController@index')->name('login');
 Route::get('item/add', 'ItemController@add');
 Route::post('item/store', 'ItemController@store');
 Route::get('item/edit/{id}', 'ItemController@edit');

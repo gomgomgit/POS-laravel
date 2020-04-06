@@ -57,7 +57,7 @@
                       foreach($row->owds as $tot) {
                         $total += $tot->total;
                       }
-                      echo $total;
+                      echo "Rp. ". number_format($total, 2, ",", ".");
                     @endphp
                   </td>
                   <td>
