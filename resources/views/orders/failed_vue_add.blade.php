@@ -124,4 +124,7 @@
 
 @section('script')
 <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+  $(".order-menu").addClass('active menu-open');
+</script>
 @endsection

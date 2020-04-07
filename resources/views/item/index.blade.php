@@ -77,3 +77,11 @@
       </div>
     </section>
 @endsection
+
+@section('script')
+<script type="text/javascript">
+  $(".product-menu").addClass('active menu-open');
+  $(".product-dd").css('display', 'block');
+  $(".item-menu").addClass('active menu-open');
+</script>
+@endsection

@@ -30,30 +30,37 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table class="table table-bordered">
-                <tr>
-                  <th style="width: 20px">No</th>
-                  <th style="width: 40%">Name</th>
-                  <th style="width: 40%">Email</th>
-                  <th style="width: 440px">Action</th>
-                </tr>
+{{--               <table class="table table-bordered display" id="tableData">
+                <thead>
+                  <tr>
+                    <th style="width: 20px">No</th>
+                    <th style="width: 40%">Name</th>
+                    <th style="width: 40%">Email</th>
+                    <th style="width: 440px">Action</th>
+                  </tr>
+                </thead>
 
-                @php
-                $no = 1;
-                @endphp
-                @foreach($user as $row)
-                <tr>
-                  <td>{{$no++}}</td>
-                  <td>{{$row->name}}</td>
-                  <td>{{$row->email}}</td>
-                  <td>
-                    <a href="users/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
-                    <a onclick="return confirm('Are you sure to delete it?')" href="{{url('users/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
-                  </td>
-                </tr>
-                @endforeach
+                <tbody>
+                  @php
+                  $no = 1;
+                  @endphp
+                  @foreach($user as $row)
+                  <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{$row->name}}</td>
+                    <td>{{$row->email}}</td>
+                    <td>
+                      <a href="users/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
+                      <a onclick="return confirm('Are you sure to delete it?')" href="{{url('users/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
 
-              </table>
+              </table> --}}
+
+              {{$dataTable->table()}}
+
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
@@ -71,4 +78,13 @@
         </div>
       </div>
     </section>
+@endsection
+
+@section('script')
+
+{{$dataTable->scripts()}}
+
+<script type="text/javascript">
+  $(".user-menu").addClass('active menu-open');
+</script>
 @endsection

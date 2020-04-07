@@ -23,34 +23,34 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
-        <li>
+        <li class="dashboard-menu">
           <a href="{{url('dashboard')}}">
             <i class="fa fa-dashboard"></i> <span> Dashboard</span>
           </a>
         </li>
-        <li class="treeview" style="height: auto;">
+        <li class="treeview product-menu" style="height: auto;">
           <a href="#">
             <i class="fa fa-book"></i> <span> Product</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu" style="display: none;">
-            <li><a href="{{route('haha')}}"><i class="fa fa-circle-o"></i> Category</a></li>
-            <li><a href="/item"><i class="fa fa-circle-o"></i> Item</a></li>
+          <ul class="treeview-menu  product-dd" style="display: none;">
+            <li class="category-menu"><a href="{{route('haha')}}"><i class="fa fa-circle-o"></i> Category</a></li>
+            <li class="item-menu"><a href="/item"><i class="fa fa-circle-o"></i> Item</a></li>
           </ul>
         </li>
-        <li>
+        <li class="order-menu">
           <a href='{{url("/orders")}}'>
             <i class="fa fa-shopping-cart"></i> <span> Order</span>
           </a>
         </li>
-        <li>
+        <li class="user-menu">
           <a href='{{url("/users")}}'>
             <i class="fa fa-users"></i> <span> User</span>
           </a>
         </li>
-        <li>
+        <li class="report-menu">
           <a href="#">
             <i class="fa fa-exclamation-triangle"></i> <span> Report</span>
           </a>

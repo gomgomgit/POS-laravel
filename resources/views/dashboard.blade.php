@@ -78,3 +78,9 @@
       </div>
     </section>
 @endsection
+
+@section('script')
+<script type="text/javascript">
+  $(".dashboard-menu").addClass('active menu-open');
+</script>
+@endsection

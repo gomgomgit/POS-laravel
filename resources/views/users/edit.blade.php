@@ -60,3 +60,9 @@
 	  <!-- /.row -->
 	</section>
 @endsection
+
+@section('script')
+<script type="text/javascript">
+  $(".user-menu").addClass('active menu-open');
+</script>
+@endsection

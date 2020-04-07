@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\UsersDataTable;
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -9,9 +10,12 @@ class UsersController extends Controller {
 	public function __construct() {
 		$this->middleware('auth');
 	}
-	public function index() {
-		$users['user'] = Users::all();
-		return view('users.index', $users);
+	// public function index() {
+	// 	$users['user'] = Users::all();
+	// 	return view('users.index', $users);
+	// }
+	public function index(UsersDataTable $dataTable) {
+		return $dataTable->render('users.index');
 	}
 	public function add() {
 		return view('users.add');
