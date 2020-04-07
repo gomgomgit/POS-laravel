@@ -47,7 +47,7 @@
         </li>
         <li>
           <a href='{{url("/users")}}'>
-            <i class="fa fa-users"></i> <span> Customers</span>
+            <i class="fa fa-users"></i> <span> User</span>
           </a>
         </li>
         <li>

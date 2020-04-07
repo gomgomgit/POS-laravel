@@ -3,7 +3,7 @@
 @section('content')
   <section class="content-header">
     <h1>
-      Customer
+      User
       <small> Add</small>
     </h1>
     <ol class="breadcrumb">
