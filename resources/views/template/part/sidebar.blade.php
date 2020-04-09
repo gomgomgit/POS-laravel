@@ -23,6 +23,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
+        @can('isAdmin')
         <li class="dashboard-menu">
           <a href="{{url('dashboard')}}">
             <i class="fa fa-dashboard"></i> <span> Dashboard</span>
@@ -40,11 +41,13 @@
             <li class="item-menu"><a href="/item"><i class="fa fa-circle-o"></i> Item</a></li>
           </ul>
         </li>
+        @endcan
         <li class="order-menu">
           <a href='{{url("/orders")}}'>
             <i class="fa fa-shopping-cart"></i> <span> Order</span>
           </a>
         </li>
+        @can('isAdmin')
         <li class="user-menu">
           <a href='{{url("/users")}}'>
             <i class="fa fa-users"></i> <span> User</span>
@@ -55,5 +58,6 @@
             <i class="fa fa-exclamation-triangle"></i> <span> Report</span>
           </a>
         </li>
+        @endcan
       </ul>
     </section>

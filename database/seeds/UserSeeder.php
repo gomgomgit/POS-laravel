@@ -18,6 +18,12 @@ class UserSeeder extends Seeder {
 			'password' => bcrypt('admin'),
 			'role' => 1,
 		]);
+		Users::insert([
+			'name' => 'staff',
+			'email' => 'staff@staff',
+			'password' => bcrypt('staff'),
+			'role' => 2,
+		]);
 
 		for ($i = 0; $i < 5; $i++) {
 			Users::insert([

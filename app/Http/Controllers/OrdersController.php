@@ -15,7 +15,11 @@ class OrdersController extends Controller {
 		$this->middleware('auth');
 	}
 	public function index() {
-		$data['owd'] = Orders::all();
+		if (Request('role') == 1) {
+			$data['owd'] = Orders::all();
+		} else {
+			$data['owd'] = Orders::where('user_id', Request('id'));
+		}
 		return view('orders.index', $data);
 	}
 	public function add() {
