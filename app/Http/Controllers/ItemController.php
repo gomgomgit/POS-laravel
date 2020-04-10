@@ -5,14 +5,46 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class ItemController extends Controller {
 	public function __construct() {
 		$this->middleware('auth');
 	}
-	public function index() {
-		$data['item'] = Item::all();
-		return view('item.index', $data);
+	// public function show_data(Request $request) {
+	// 	if ($request->ajax()) {
+	// 		$data = Item::all();
+
+	// 		return DataTables::of($data)
+	// 			->addColumn('action', function ($data) {
+	// 				$button = '<a href="item/edit/' . $data->id . '" class="btn-sm btn-success">Edit</a> ';
+	// 				return $button;
+	// 			})
+	// 			->rawColumns(['action'])
+	// 			->make(true);
+	// 	}
+	// 	return view('item.index');
+	// }
+	public function index(Request $request) {
+
+		if ($request->ajax()) {
+			$data = Item::all();
+
+			return DataTables::of($data)
+				->addColumn('action', function ($data) {
+					$button = '<a href="item/edit/' . $data->id . '" class="btn-sm btn-success">Edit</a> ';
+					$button .= '<a onclick="return confirm(\'Are you sure to delete it?\')" href="item/delete/' . $data->id . '" class="btn-sm btn-danger">Delete</a>';
+					return $button;
+				})
+				->addColumn('cate', function ($data) {
+					$cate = $data->cate->name;
+					return $cate;
+				})
+				->rawColumns(['action', 'cate'])
+				->make(true);
+		}
+		return view('item.index');
+
 	}
 	public function add() {
 		$cate['category'] = Category::all();

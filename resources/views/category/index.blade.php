@@ -31,14 +31,16 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table class="table table-bordered">
-                <tr>
-                  <th style="width: 20px">No</th>
-                  <th>Name</th>
-                  <th style="width: 240px">Action</th>
-                </tr>
+              <table class="table table-bordered" id="show-data">
+                <thead>
+                  <tr>
+                    <th style="width: 20px">Id</th>
+                    <th>Name</th>
+                    <th style="width: 240px">Action</th>
+                  </tr>
+                </thead>
 
-                @php
+{{--                 @php
                 $no = 1;
                 @endphp
                 @foreach($category as $row)
@@ -50,7 +52,7 @@
                     <a onclick="return confirm('Are you sure to delete it?')" href="{{url('category/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
-                @endforeach
+                @endforeach --}}
 
               </table>
             </div>
@@ -77,5 +79,22 @@
   $(".product-menu").addClass('active menu-open');
   $(".product-dd").css('display', 'block');
   $(".category-menu").addClass('active menu-open');
+</script>
+<script type="text/javascript">
+  $(function(){
+    var table = $('#show-data').DataTable({
+      procesing:true,
+      serverSide: true,
+      ajax: {
+          url: '{{ url("category") }}'
+      },
+      columns: [
+      {data: 'id', name: 'id'},
+      {data: 'name', name: 'name'},
+      {data: 'action', name: 'action', orderable: false},
+      // {data: 'kategori', name: 'kategori', orderable: false, searchable: false},
+      ],
+    });
+  });
 </script>
 @endsection

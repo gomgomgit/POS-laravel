@@ -31,24 +31,28 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table class="table table-bordered">
-                <tr>
-                  <th style="width: 20px">No</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th style="width: 170px">Price</th>
-                  <th style="width: 100px">Stock</th>
-                  <th style="width: 250px">Action</th>
-                </tr>
+              <table class="table table-bordered" id="show-item">
+                <thead>
+                  <tr>
+                    <th style="width: 20px">Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th style="width: 170px">Price</th>
+                    <th style="width: 100px">Stock</th>
+                    <th style="width: 250px">Action</th>
+                  </tr>
+                </thead>
 
-                @php
+
+
+{{--                 @php
                 $no = 1;
                 @endphp
                 @foreach($item as $row)
                 <tr>
                   <td>{{$no++}}</td>
                   <td>{{$row->name}}</td>
-                  <td>{{$row->cate->name}}</td>{{-- Dari function/method di model --}}
+                  <td>{{$row->cate->name}}</td>
                   <td>Rp. {{number_format($row->price, 2, "," , ".")}}</td>
                   <td>{{$row->stock}}</td>
                   <td>
@@ -56,7 +60,7 @@
                     <a onclick="return confirm('are you sure to delete it?')" href="{{url('item/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
-                @endforeach
+                @endforeach --}}
 
               </table>
             </div>
@@ -83,5 +87,25 @@
   $(".product-menu").addClass('active menu-open');
   $(".product-dd").css('display', 'block');
   $(".item-menu").addClass('active menu-open');
+</script>
+<script type="text/javascript">
+    $(function() {
+        var oTable = $('#show-item').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '{{ url("item") }}'
+            },
+            columns: [
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'cate', name: 'cate'},
+            {data: 'price', name: 'price'},
+            {data: 'stock', name: 'stock'},
+            {data: 'action', name: 'action', orderable: false},
+            // {data: 'kategori', name: 'kategori', orderable: false, searchable: false},
+        ],
+        });
+    });
 </script>
 @endsection

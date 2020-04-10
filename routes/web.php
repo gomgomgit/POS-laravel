@@ -36,6 +36,7 @@ Route::middleware('can:isAdmin')->group(function () {
 
 	Route::prefix('item')->group(function () {
 		Route::get('', 'ItemController@index')->name('login');
+		Route::get('show', 'ItemController@show_data');
 		Route::get('add', 'ItemController@add');
 		Route::post('store', 'ItemController@store');
 		Route::get('edit/{id}', 'ItemController@edit');

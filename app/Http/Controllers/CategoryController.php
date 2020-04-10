@@ -4,14 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CategoryController extends Controller {
 	public function __construct() {
 		$this->middleware('auth');
 	}
-	public function index() {
-		$data['category'] = Category::all();
-		return view('category.index', $data);
+	public function index(Request $request) {
+		if ($request->ajax()) {
+			$data = Category::all();
+
+			return DataTables::of($data)
+				->addColumn('action', function ($data) {
+					$button = '<a href="category/edit/' . $data->id . '" class="btn-sm btn-success">Edit</a>';
+					$button .= '<a onclick="return confirm(\'Are you sure to delete it?\')" href="category/delete/' . $data->id . '" class="btn-sm btn-danger">Delete</a>';
+					return $button;
+				})
+				->rawColumns(['action'])
+				->make(true);
+		}
+
+		return view('category.index');
 	}
 	public function store(Request $request) {
 		$this->validate($request, [

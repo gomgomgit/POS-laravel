@@ -30,7 +30,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-{{--               <table class="table table-bordered display" id="tableData">
+              <table class="table table-bordered display" id="show-data">
                 <thead>
                   <tr>
                     <th style="width: 20px">No</th>
@@ -39,7 +39,7 @@
                     <th style="width: 440px">Action</th>
                   </tr>
                 </thead>
-
+{{--
                 <tbody>
                   @php
                   $no = 1;
@@ -55,11 +55,11 @@
                     </td>
                   </tr>
                   @endforeach
-                </tbody>
+                </tbody> --}}
 
-              </table> --}}
+              </table>
 
-              {{$dataTable->table()}}
+              {{-- {{$dataTable->table()}} --}}
 
             </div>
             <!-- /.box-body -->
@@ -81,10 +81,27 @@
 @endsection
 
 @section('script')
-
-{{$dataTable->scripts()}}
+{{--
+{{$dataTable->scripts()}} --}}
 
 <script type="text/javascript">
   $(".user-menu").addClass('active menu-open');
+</script>
+<script type="text/javascript">
+    $(function() {
+        var oTable = $('#show-data').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '{{ url("users") }}'
+            },
+            columns: [
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'action', name: 'action', orderable: false},
+        ],
+        });
+    });
 </script>
 @endsection

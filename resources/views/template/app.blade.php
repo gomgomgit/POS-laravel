@@ -30,6 +30,8 @@
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
+  <link rel="stylesheet" type="text/css" href="{{url('datatables/css/datatables.bootstrap.css')}}">
+
   @yield('link')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -324,6 +326,8 @@
 <script src='{{asset("AdminLTE-2.4/dist/js/demo.js")}}'></script>
 
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script src="{{url('datatables/js/jquery.dataTables.min.js')}}"></script>
 
 @yield('script')
 </body>
