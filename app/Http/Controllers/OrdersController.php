@@ -9,13 +9,14 @@ use App\Models\Orders;
 use App\Models\PaymentMethod;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller {
 	public function __construct() {
 		$this->middleware('auth');
 	}
 	public function index() {
-		if (Request('role') == 1) {
+		if (Auth::user()->can('isAdmin')) {
 			$data['owd'] = Orders::all();
 		} else {
 			$data['owd'] = Orders::where('user_id', Request('id'));
