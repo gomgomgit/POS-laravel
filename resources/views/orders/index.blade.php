@@ -30,25 +30,27 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table class="table table-bordered">
-                <tr>
-                  <th style="width: 20px">No</th>
-                  <th style="width: 7%">Table</th>
-                  <th style="width: 275px">User</th>
-                  <th style="width: 15%">Date</th>
-                  <th style="width: 25%">Total</th>
-                  <th style="width: 120px">Details</th>
-                  <th style="width: 240px">Action</th>
-                </tr>
+              <table class="table table-bordered" id="show-data">
+                <thead>
+                  <tr>
+                    <th style="width: 20px">Id</th>
+                    <th style="width: 7%">Table</th>
+                    <th style="width: 275px">User</th>
+                    <th style="width: 15%">Date</th>
+                    <th style="width: 25%">Total</th>
+                    <th style="width: 120px">Details</th>
+                    <th style="width: 240px">Action</th>
+                  </tr>
+                </thead>
 
-                @php
+{{--                 @php
                 $no = 1;
                 @endphp
                 @foreach($owd as $row)
                 <tr>
                   <td>{{$no++}}</td>
                   <td>{{$row->table_number}}</td>
-                  <td>{{$row->usr->name}}</td>{{-- Dari function/method di model --}}
+                  <td>{{$row->usr->name}}</td>
                   <td>{{$row->date}}</td>
                   <td>
                     @php
@@ -68,7 +70,7 @@
                     <a onclick="return confirm('Are you sure to delete it?')" href="{{url('orders/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
                   </td>
                 </tr>
-                @endforeach
+                @endforeach --}}
 
               </table>
             </div>
@@ -93,5 +95,26 @@
 @section('script')
 <script type="text/javascript">
   $(".order-menu").addClass('active menu-open');
+</script>
+<script type="text/javascript">
+    $(function() {
+        var oTable = $('#show-data').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '{{ url("orders") }}'
+            },
+            columns: [
+            {data: 'id', name: 'id'},
+            {data: 'table_number', name: 'table_number'},
+            {data: 'user', name: 'user'},
+            {data: 'date', name: 'date'},
+            {data: 'total', name: 'total'},
+            {data: 'detail', name: 'detail'},
+            {data: 'action', name: 'action', orderable: false},
+            // {data: 'kategori', name: 'kategori', orderable: false, searchable: false},
+        ],
+        });
+    });
 </script>
 @endsection

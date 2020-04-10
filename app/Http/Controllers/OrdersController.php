@@ -10,18 +10,47 @@ use App\Models\PaymentMethod;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\DataTables;
 
 class OrdersController extends Controller {
 	public function __construct() {
 		$this->middleware('auth');
 	}
-	public function index() {
+	public function index(Request $request) {
 		if (Auth::user()->can('isAdmin')) {
-			$data['owd'] = Orders::all();
+			$data = Orders::all();
 		} else {
-			$data['owd'] = Orders::where('user_id', Request('id'));
+			$data = Orders::where('user_id', Request('id'));
 		}
-		return view('orders.index', $data);
+
+		if ($request->ajax()) {
+
+			return DataTables::of($data)
+				->addColumn('action', function ($data) {
+					$button = '<a href="item/edit/' . $data->id . '" class="btn-sm btn-success">Edit</a> ';
+					$button .= '<a onclick="return confirm(\'Are you sure to delete it?\')" href="item/delete/' . $data->id . '" class="btn-sm btn-danger">Delete</a>';
+					return $button;
+				})
+				->addColumn('detail', function ($data) {
+					$detail = '<a href="orders/details/' . $data->id . '" class="btn-sm btn-primary">Details</a>';
+					return $detail;
+				})
+				->addColumn('user', function ($data) {
+					$user = $data->usr->name;
+					return $user;
+				})
+				->addColumn('total', function ($data) {
+					$total = 0;
+					foreach ($data->owds as $tot) {
+						$total += $tot->total;
+					};
+					return $total;
+				})
+				->rawColumns(['action', 'detail', 'user', 'total'])
+				->make(true);
+		}
+
+		return view('orders.index');
 	}
 	public function add() {
 		$data['usr'] = Users::all();
