@@ -34,8 +34,9 @@
                 <thead>
                   <tr>
                     <th style="width: 20px">No</th>
-                    <th style="width: 40%">Name</th>
-                    <th style="width: 40%">Email</th>
+                    <th style="width: 30%">Name</th>
+                    <th style="width: 30%">Email</th>
+                    <th style="width: 30%">Role</th>
                     <th style="width: 440px">Action</th>
                   </tr>
                 </thead>
@@ -99,6 +100,7 @@
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
+            {data: 'role', name: 'role'},
             {data: 'action', name: 'action', orderable: false},
         ],
         });

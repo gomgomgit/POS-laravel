@@ -24,6 +24,13 @@ class UsersController extends Controller {
 					$button .= '<a onclick="return confirm(\'Are you sure to delete it?\')" href="users/delete/' . $data->id . '" class="btn-sm btn-danger">Delete</a>';
 					return $button;
 				})
+				->addColumn('role', function ($data) {
+					$role;
+					if ($data->role == 1) {
+						$role = 'Admin';
+					} else { $role = 'Staff';}
+					return $role;
+				})
 				->rawColumns(['action'])
 				->make(true);
 		}
@@ -38,12 +45,14 @@ class UsersController extends Controller {
 			'name' => 'required',
 			'email' => 'required',
 			'password' => 'required',
+			'role' => 'required',
 		]);
 
 		Users::insert([
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' => bcrypt($request->password),
+			'role' => $request->role,
 		]);
 		return redirect('users')->with('message', 'User has been added');
 	}
@@ -55,11 +64,13 @@ class UsersController extends Controller {
 		$this->validate($request, [
 			'name' => 'required',
 			'email' => 'required',
+			'role' => 'required',
 		]);
 
 		$update = Users::find($id);
 		$update->name = $request->name;
 		$update->email = $request->email;
+		$update->role = $request->role;
 
 		if ($request->password) {
 			$update->password = $request->password;

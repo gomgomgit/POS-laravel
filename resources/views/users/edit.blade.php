@@ -1,4 +1,8 @@
 @extends('template.app')
+@section('link')
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="{{asset('AdminLTE-2.4/plugins/iCheck/all.css')}}">
+@endsection
 
 @section('content')
   <section class="content-header">
@@ -45,6 +49,16 @@
 
                   <p class="help-block">Example block-level help text here.</p>
                 </div>
+                <div class="form-group">
+                  <label>
+                    <input type="radio" name="role" value="1" class="role" {{$user->role == 1 ? 'checked' : ''}}>
+                     Admin
+                  </label>
+                  <label>
+                    <input type="radio" name="role" value="2" class="role" {{$user->role == 2 ? 'checked' : ''}}>
+                     Staff
+                  </label>
+                </div>
               </div>
               <!-- /.box-body -->
 
@@ -62,7 +76,17 @@
 @endsection
 
 @section('script')
+<script src="{{asset('AdminLTE-2.4/plugins/iCheck/icheck.min.js')}}"></script>
+
 <script type="text/javascript">
   $(".user-menu").addClass('active menu-open');
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.role').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
+  })
 </script>
 @endsection
