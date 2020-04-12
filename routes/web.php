@@ -17,7 +17,7 @@ Route::get('', function () {
 	return view('auth.login');
 });
 // Route::post('login', 'LogController@check');
-Route::get('logout', 'LogController@out');
+Route::get('logout', 'Auth\LoginController@logout');
 
 Route::middleware('can:isAdmin')->group(function () {
 

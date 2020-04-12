@@ -42,6 +42,10 @@ class LoginController extends Controller {
 			return redirect()->intended('orders/add'); //redirect to except panel
 		}
 
-		return redirect()->intended('/'); //redirect to standard user homepage
+		return redirect()->intended('dashboard'); //redirect to standard user homepage
+	}
+	public function logout() {
+		Auth::logout();
+		return redirect('');
 	}
 }

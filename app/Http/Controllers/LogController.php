@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LogController extends Controller {
@@ -28,8 +27,8 @@ class LogController extends Controller {
 			}
 		} else {return redirect('/')->with('err_email', 'Email belum terdaftar');}
 	}
-	public function out() {
-		Auth::logout();
-		return view('welcome');
-	}
+	// public function out() {
+	// 	Auth::logout();
+	// 	return redirect('');
+	// }
 }
