@@ -47,11 +47,3 @@
 	  <!-- /.row -->
 	</section>
 @endsection
-
-@section('script')
-<script type="text/javascript">
-  $(".product-menu").addClass('active menu-open');
-  $(".product-dd").css('display', 'block');
-  $(".category-menu").addClass('active menu-open');
-</script>
-@endsection

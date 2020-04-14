@@ -94,9 +94,6 @@
 
 @section('script')
 <script type="text/javascript">
-  $(".order-menu").addClass('active menu-open');
-</script>
-<script type="text/javascript">
     $(function() {
         var oTable = $('#show-data').DataTable({
             processing: true,

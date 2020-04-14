@@ -38,11 +38,15 @@ class LoginController extends Controller {
 	}
 
 	protected function authenticated($request, $user) {
+		if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+		}
+
 		if (Auth::user()->can('isStaff')) {
 			return redirect()->intended('orders/add'); //redirect to except panel
 		}
 
 		return redirect()->intended('dashboard'); //redirect to standard user homepage
+
 	}
 	public function logout() {
 		Auth::logout();

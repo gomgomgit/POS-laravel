@@ -79,9 +79,6 @@
 <script src="{{asset('AdminLTE-2.4/plugins/iCheck/icheck.min.js')}}"></script>
 
 <script type="text/javascript">
-  $(".user-menu").addClass('active menu-open');
-</script>
-<script type="text/javascript">
   $(document).ready(function(){
     $('.role').iCheck({
       checkboxClass: 'icheckbox_flat-green',

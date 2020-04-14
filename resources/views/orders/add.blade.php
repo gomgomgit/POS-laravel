@@ -276,7 +276,4 @@
     },
   })
 </script>
-<script type="text/javascript">
-  $(".order-menu").addClass('active menu-open');
-</script>
 @endsection

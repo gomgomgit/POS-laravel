@@ -3,12 +3,12 @@
 @section('content')
     <section class="content-header">
       <h1>
-        User
+        Customer
         <small> Index</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">User</li>
+        <li class="active">Customer</li>
       </ol>
     </section>
 
@@ -24,7 +24,7 @@
           @endif
           <div class="box">
             <div class="box-header with-border">
-              <a href="{{url('users/add')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah User</a>
+              <a href="{{url('customer/add')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Customer</a>
               <div class="box-tools">
               </div>
             </div>
@@ -36,31 +36,13 @@
                     <th style="width: 20px">No</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Role</th>
-                    <th style="width: 240px">Action</th>
+                    <th>Phone</th>
+                    <th>Gender</th>
+                    <th style="width: 440px">Action</th>
                   </tr>
                 </thead>
-{{--
-                <tbody>
-                  @php
-                  $no = 1;
-                  @endphp
-                  @foreach($user as $row)
-                  <tr>
-                    <td>{{$no++}}</td>
-                    <td>{{$row->name}}</td>
-                    <td>{{$row->email}}</td>
-                    <td>
-                      <a href="users/edit/{{$row->id}}" class="btn-sm btn-success">Edit</a>
-                      <a onclick="return confirm('Are you sure to delete it?')" href="{{url('users/delete/'.$row->id)}}" class="btn-sm btn-danger">Delete</a>
-                    </td>
-                  </tr>
-                  @endforeach
-                </tbody> --}}
 
               </table>
-
-              {{-- {{$dataTable->table()}} --}}
 
             </div>
             <!-- /.box-body -->
@@ -82,22 +64,20 @@
 @endsection
 
 @section('script')
-{{--
-{{$dataTable->scripts()}} --}}
-
 <script type="text/javascript">
     $(function() {
         var oTable = $('#show-data').DataTable({
             processing: true,
             serverSide: true,
             ajax: {
-                url: '{{ url("users") }}'
+                url: '{{ url("customer") }}'
             },
             columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
-            {data: 'role', name: 'role'},
+            {data: 'phone', name: 'phone'},
+            {data: 'gender', name: 'gender'},
             {data: 'action', name: 'action', orderable: false},
         ],
         });

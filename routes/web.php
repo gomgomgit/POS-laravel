@@ -53,6 +53,15 @@ Route::middleware('can:isAdmin')->group(function () {
 		Route::get('delete/{id}', 'UsersController@destroy');
 	});
 
+	Route::prefix('customer')->group(function () {
+		Route::get('', 'CustomerController@index');
+		Route::get('add', 'CustomerController@add');
+		Route::post('store', 'CustomerController@store');
+		Route::get('edit/{id}', 'CustomerController@edit');
+		Route::post('update/{id}', 'CustomerController@update');
+		Route::get('delete/{id}', 'CustomerController@destroy');
+	});
+
 });
 
 Route::prefix('orders')->group(function () {
