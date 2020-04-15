@@ -7,12 +7,12 @@
 @section('content')
   <section class="content-header">
     <h1>
-      User
+      Customer
       <small> Add</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="#"><i class="fa fa-users"></i> User</a></li>
+      <li><a href="#"><i class="fa fa-users"></i> Customer</a></li>
       <li class="active">Add</li>
     </ol>
   </section>
@@ -24,11 +24,11 @@
 	      <!-- Horizontal Form -->
 	      <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">User</h3>
+              <h3 class="box-title">Customer</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="post" action="/users/store">
+            <form role="form" method="post" action="/customer/store">
               @csrf
               <div class="box-body">
                 <div class="bg-danger p-1">
@@ -45,23 +45,17 @@
                   <input type="email" value="{{old('email')}}" class="form-control" id="email" name="email" placeholder="Enter your email">
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" value="{{old('password')}}" class="form-control" id="password" name="password" placeholder="Enter password">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputFile">Avatar</label>
-                  <input type="file" id="exampleInputFile">
-
-                  <p class="help-block">Example block-level help text here.</p>
+                  <label for="phone">Phone Number</label>
+                  <input type="number" value="{{old('phone')}}" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
                 </div>
                 <div class="form-group">
                   <label>
-                    <input type="radio" name="role" value="1" class="role">
-                     Admin
+                    <input type="radio" name="gender" value="L" class="gender">
+                     Laki-laki
                   </label>
                   <label>
-                    <input type="radio" name="role" value="2" class="role" checked>
-                     Staff
+                    <input type="radio" name="gender" value="P" class="gender">
+                     Perempuan
                   </label>
                 </div>
               </div>
@@ -87,7 +81,7 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('.role').iCheck({
+    $('.gender').iCheck({
       checkboxClass: 'icheckbox_flat-green',
       radioClass   : 'iradio_flat-green'
     })

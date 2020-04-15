@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('', function () {
+	if (Auth::user()) {
+		return back();
+	}
 	return view('auth.login');
 });
 // Route::post('login', 'LogController@check');
@@ -35,7 +38,7 @@ Route::middleware('can:isAdmin')->group(function () {
 	});
 
 	Route::prefix('item')->group(function () {
-		Route::get('', 'ItemController@index')->name('login');
+		Route::get('', 'ItemController@index');
 		Route::get('show', 'ItemController@show_data');
 		Route::get('add', 'ItemController@add');
 		Route::post('store', 'ItemController@store');

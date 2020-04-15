@@ -39,21 +39,19 @@ class CustomerController extends Controller {
 			'name' => 'required',
 			'email' => 'required',
 			'phone' => 'required',
-			'password' => 'required',
-			'role' => 'required',
+			'gender' => 'required',
 		]);
 
-		Users::insert([
+		Customer::insert([
 			'name' => $request->name,
 			'email' => $request->email,
 			'phone' => $request->phone,
-			'password' => bcrypt($request->password),
 			'gender' => $request->gender,
 		]);
 		return redirect('customer')->with('message', 'Customer has been added');
 	}
 	public function edit(Customer $customer, $id) {
-		$data['customer'] = $cutomer::find($id);
+		$data['customer'] = $customer::find($id);
 		return view('customer.edit', $data);
 	}
 	public function update(Request $request, $id) {
@@ -64,22 +62,18 @@ class CustomerController extends Controller {
 			'gender' => 'required',
 		]);
 
-		$update = Users::find($id);
+		$update = Customer::find($id);
 		$update->name = $request->name;
 		$update->email = $request->email;
 		$update->phone = $request->phone;
 		$update->gender = $request->gender;
 
-		if ($request->password) {
-			$update->password = $request->password;
-		};
-
 		$update->save();
 
 		return redirect('customer')->with('message', 'Customer has been updated');
 	}
-	public function destroy(Users $users, $id) {
-		$users::find($id)->delete();
+	public function destroy(Customer $customer, $id) {
+		$customer::find($id)->delete();
 		return redirect('customer')->with('message', 'Customer has been deleted');
 	}
 
